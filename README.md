@@ -28,6 +28,14 @@
 ## 設計書
 画面推移 https://drive.google.com/file/d/1bpn6x8D6VpNEzWV5kY70bIUET-NNz3MG/view?usp=sharing
 
+ワークフレーム https://app.diagrams.net/#G1Or3QyR4TRn1WIT0IViWYMvVXqD8eMgi3
+
+ER図 https://drive.google.com/file/d/1DvPBdllPnmmec3Rn807gYQByiJqYjK0i/view?usp=sharing
+
+テーブル定義書 https://docs.google.com/spreadsheets/d/1qondkPFD3Ub7GiKVFn4e_m5bni1ascembldtFeG5YJk/edit?usp=sharing
+
+詳細設計 https://docs.google.com/spreadsheets/d/1dLoVPE9GTdIiwwxF0yQF0TMKPTp7WPA9UM4abKrPbvA/edit?usp=sharing
+
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1ELEMkSacdEkSGb22zAK1W3V8-IlB42vIcfbFoBlag7U/edit#gid=0
 

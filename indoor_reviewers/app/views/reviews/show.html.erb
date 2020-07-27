@@ -1,0 +1,7 @@
+<div class="container">
+	<%= attachment_image_tag @review, :image, format: 'jpeg', size: "150×150" %><br>
+	<%= @review.title %>
+	<%= @review.genre.name %>
+	<%= @review.body %>
+	<%= @review.user.name %>
+</div>

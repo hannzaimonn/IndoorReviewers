@@ -1,0 +1,2 @@
+class Boolmark < ApplicationRecord
+end
