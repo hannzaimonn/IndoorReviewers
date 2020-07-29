@@ -35,8 +35,9 @@
 		<%= f.submit "レビューを更新",class: "btn btn-primary col-xs-12" %>
 	</div>
 <% end %>
+<%= link_to "レビューを削除",@review, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_review_#{@review.id}" %>
 <%= link_to "レビュー詳細に戻る", @review, class: "review_#{@review.id}" %>
-<%= link_to "レビュー一覧に行く", reviews_path, class: "back" %>
+<%= link_to "レビュー一覧に行く", reviews_path %>
 
 </div>
 </div>
