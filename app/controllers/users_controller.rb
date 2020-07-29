@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :index, :show,:edit]
   before_action :baria_user, only: [:edit, :update]
   def index
+  	@users = User.all
   end
 
   def show
