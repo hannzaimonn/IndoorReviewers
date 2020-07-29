@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'users/show'
-  get 'users/edit'
+  resources :users,only: [:show,:index,:edit,:update]
   resources :reviews
   root 'homes#top'
   get 'homes/about' => "homes#about"

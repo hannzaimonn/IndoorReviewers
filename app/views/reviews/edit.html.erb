@@ -1,0 +1,42 @@
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<h1>レビューの編集</h1>
+<% if @review.errors.any? %>
+<h4><%= @review.errors.count %>errors prohibited this book from being saved:</h4>
+<ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+</ul>
+<% end %>
+
+<%= form_for(@review) do |f| %>
+    <div>
+			<%= f.label :画像 %>
+			<%= f.attachment_field :image %>
+	</div>
+
+	<div class="field row">
+		<%= f.label :タイトル %>
+		<%= f.text_field :title, class: "col-xs-12 book_title" %>
+	</div>
+
+	<div>
+			<lebel>ジャンルを選ぶ</lebel>
+			<%= f.collection_select :genre_id, @genres, :id, :name, :include_blank => "選択して下さい" %>
+	</div>
+
+	<div class="field row">
+		<%= f.label :本文 %> <!-- ここを変更 -->
+		<%= f.text_area :body, class: "col-xs-12 book_body" %>
+	</div>
+
+	<div class="actions row">
+		<%= f.submit "Update Book",class: "btn btn-primary col-xs-12" %>
+	</div>
+<% end %>
+<%= link_to "Show", @book, class: "book_#{@book.id}" %>
+<%= link_to "Back", books_path, class: "back" %>
+
+</div>
+</div>

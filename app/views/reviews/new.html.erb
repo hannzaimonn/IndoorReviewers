@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row">
+				<!-- エラーメッセージ表示-->
+				<% if @review.errors.any? %>
+				<h3><%= @review.errors.count %>error occurrence</h3>
+				<ul>
+					<% @review.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+		            <% end %>
+	            </ul>
+                <% end %>
+
+		<h1>NEW REVIEW</h1>
+		<%= form_for(@review) do |f| %>
+		<div>
+			<%= f.label :画像 %>
+			<%= f.attachment_field :image %>
+		</div>
+
+		<div>
+			<%= f.label :タイトル %>
+			<%= f.text_field :title, class: "col-xs-12 review_title" %>
+		</div>
+
+		<div>
+			<lebel>ジャンルを選ぶ</lebel>
+			<%= f.collection_select :genre_id, @genres, :id, :name, :include_blank => "選択して下さい" %>
+		</div>
+
+		<div>
+			<%= f.label :本文 %>
+			<%= f.text_area :body, class: "col-xs-12 review_body" %>
+		</div>
+
+		<%= f.submit '新規登録', class: "btn btn-primary" %>
+
+		<% end %>
+		<%= link_to "ジャンルを追加する",new_genre_path %>
+	</div>
+</div>
