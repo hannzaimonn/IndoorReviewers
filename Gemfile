@@ -77,3 +77,9 @@ gem 'popper_js', '~> 1.9.9'
 gem 'kaminari','~> 1.2.1'
 #デバッグ
 gem 'pry-byebug'
+
+#デプロイ用
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
