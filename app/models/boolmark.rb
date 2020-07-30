@@ -1,2 +1,0 @@
-class Boolmark < ApplicationRecord
-end
