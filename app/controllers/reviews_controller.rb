@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
 
 	def index
 		@reviews = Review.all
+		@genres = Genre.all
 	end
 
 	def show
@@ -17,6 +18,10 @@ class ReviewsController < ApplicationController
 	def edit
 		@review = Review.find(params[:id])
 		@genres = Genre.all
+	end
+
+	def rank
+		@all_ranks =Review.find(Bookmark.group(:review_id).order('count(review_id) desc').limit(50).pluck(:review_id))
 	end
 
 	def create

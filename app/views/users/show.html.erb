@@ -10,6 +10,28 @@
 			    <th><%= @user.name %></th>
 		    </tr>
 </table>
+ <% user ||= current_user %>
+<div class="stats">
+  <tr>
+    <th>フォロー</th>
+  <th><a href="<%= following_user_path(user) %>">
+    <strong id="following" class="stat">
+      <%= user.followings.count %>
+    </strong>
+  </a></th>
+  </tr>
+  <tr>
+  <th>フォロワー</th>
+  <th><a href="<%= followers_user_path(user) %>">
+    <strong id="followers" class="stat">
+      <%= user.followers.count %>
+    </strong>
+  </a></th>
+  </tr>
+</div>
+<div>
+	<%= link_to 'お気に入り',bookmarks_path, class: "col-xs-12 btn btn-default glyphicon" %>
+</div>
 <% if current_user.id == @user.id %>
 <div>
 	<%= link_to '編集',edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon edit_user_#{@user.id}" %>

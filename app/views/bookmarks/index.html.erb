@@ -1,0 +1,11 @@
+<div class="container">
+<% @bookmark.each do |bookmark| %>
+	<%= link_to review_path(bookmark.review.id) do %>
+	<%= attachment_image_tag(bookmark.review, :image, :fill, 100, 100, fallback: "no_image.jpg") %><br>
+	<%= bookmark.review.title %>
+	<% end %>
+	<%= bookmark.review[:created_at].strftime("%Y-%m-%d %H:%M") %>
+	<%= bookmark.review.genre.name %>
+	<%= bookmark.review.user.name %>
+	<% end %>
+</div>
