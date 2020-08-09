@@ -9,6 +9,10 @@
  			<tr>
 			    <th><%= @user.name %></th>
 		    </tr>
+		    <tr>
+		    	<th><p>・プロフィール</p>
+		    		<%= @user.body %></th>
+		    </tr>
 		</table>
  <% @user ||= current_user %>
   <div class="stats">

@@ -13,12 +13,12 @@
 		<h1>NEW REVIEW</h1>
 		<%= form_for(@review) do |f| %>
 		<div>
-			<%= f.label :画像 %>
+			<%= f.label :image, "画像" %>
 			<%= f.attachment_field :image %>
 		</div>
 
 		<div>
-			<%= f.label :タイトル %>
+			<%= f.label :title, "タイトル" %>
 			<%= f.text_field :title, class: "col-xs-12 review_title" %>
 		</div>
 
@@ -28,7 +28,7 @@
 		</div>
 
 		<div>
-			<%= f.label :本文 %>
+			<%= f.label :body, "本文" %>
 			<%= f.text_area :body, class: "col-xs-12 review_body" %>
 		</div>
 

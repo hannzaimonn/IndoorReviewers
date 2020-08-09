@@ -21,9 +21,9 @@
 	        <div>コメント数:<%= @review.comments.count %></div>
             <hr>
 
-            <li id="comments_area">
+            <div id="comments_area">
             <%= render partial: 'comments/index', locals: { comments: @comments } %>
-            </li>
+            </div>
 				<% if user_signed_in? %>
 				<% if @review.user.id == current_user.id %>
 				 <% else %>

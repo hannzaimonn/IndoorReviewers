@@ -16,15 +16,19 @@
 <!-- エラーメッセージ表示-->
 
 <div class="field">
-	<%= f.label :name %>
+	<%= f.label :name, "ユーザー名" %>
 	<%= f.text_field :name, class: "name" %>
 </div>
 
 <div class="field">
-	<%= f.label :image %>
+	<%= f.label :image, "プロフィール画像" %>
 	<%= f.attachment_field :image, class: "user_image" %>
 </div>
 
+<div class="field">
+	<%= f.label :body, "プロフィール" %>
+	<%= f.text_area :body, class: "body" %>
+</div>
 
 <div class="actions">
 	<%= f.submit 'Update User' %>

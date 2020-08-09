@@ -1,4 +1,4 @@
-<% comments.each do |comment| %>
+<% comments.first(3).each do |comment| %>
     <p><%= attachment_image_tag(comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg") %>
 	<%= comment.user.name %>
 	<span>　　　　<%= comment.body %></span>
@@ -6,3 +6,14 @@
 	<%= link_to "Destroy", review_comment_path(comment.review, comment), method: :delete, remote: true, class: "btn btn-danger" %>
 	<% end %></p>
 <% end %>
+<button type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る</button>
+            <div class="collapse" id="collapseExample">
+            	<% comments.offset(3).each do |comment| %>
+            	<p><%= attachment_image_tag(comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg") %>
+            		<%= comment.user.name %>
+            		<span>　　　　<%= comment.body %></span>
+            		<% if comment.user == current_user%>
+            		<%= link_to "Destroy", review_comment_path(comment.review, comment), method: :delete, remote: true, class: "btn btn-danger" %>
+            		<% end %></p>
+            		<% end %>
+              </div>
