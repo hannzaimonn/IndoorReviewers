@@ -1,6 +1,6 @@
 <section class="container">
 <div class="row">
-	<h1>Follower User</h1>
+	<h1>フォロワー</h1>
 	<table class="table">
 	<thead>
 		<tr>
@@ -15,7 +15,7 @@
 <% @user.followers.each do |user| %>
 <tr>
   <td><%= link_to (user) do %>
-				<%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
+				<%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no_image.jpg") %>
 				<% end %>
 				</td>
 			<td><%= user.name%></td>

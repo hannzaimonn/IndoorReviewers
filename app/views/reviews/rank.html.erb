@@ -1,14 +1,21 @@
 <div class="container text-center">
  <div class="row">
+ 	<h1>ランキング</h1>
  	<% @all_ranks.each.with_index(1) do |review, i| %>
+ 	<hr>
  	<h4>第<%= i %>位</h4>
  	<%= link_to review_path(review.id) do %>
 	<%= attachment_image_tag(review, :image, :fill, 100, 100, fallback: "no_image.jpg") %><br>
-	<%= review.title %>
+	<span class="show2"><%= review.title %></span>
 	<% end %>
-	<%= review[:created_at].strftime("%Y-%m-%d %H:%M") %>
-	<%= review.genre.name %>
-	<%= review.user.name %>
+	<div class="col-xs-13 text-center">
+    	<span>　　　　　　　　</span>
+    	<span>ユーザー名:<%= review.user.name %></span>
+    	<span>　　　　　　　　　</span>
+         <span>ジャンル:<%= review.genre.name %></span>
+	         <span>　　　　　　　　　　　　　</span>
+	     <span>投稿日:<%= review[:created_at].strftime("%Y-%m-%d %H:%M") %></span>
+    </div>
  	<% end %>
  </div>
 </div>

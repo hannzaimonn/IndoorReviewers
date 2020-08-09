@@ -6,13 +6,15 @@ class ReviewsController < ApplicationController
 	end
 
 	def index
-		@reviews = Review.all
+		@q = Review.ransack(params[:q])
 		@genres = Genre.all
+		@reviews = @q.result(distinct: true).order(created_at: :desc)
 	end
 
 	def show
 		@review = Review.find(params[:id])
 		@comment = Comment.new
+		@comments = @review.comments.order(created_at: :desc)
 	end
 
 	def edit

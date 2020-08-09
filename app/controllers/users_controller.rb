@@ -5,8 +5,14 @@ class UsersController < ApplicationController
   	@users = User.all
   end
 
+  def review
+    @user = User.find(params[:id])
+  end
+
   def show
   	@user = User.find(params[:id])
+    @users = @user.followings
+    @time = Review.where(user_id: @users).order(created_at: :desc)
   end
 
   def edit

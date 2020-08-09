@@ -83,3 +83,7 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+#検索用
+gem 'ransack'
+#テスト用
+gem 'rspec-rails'

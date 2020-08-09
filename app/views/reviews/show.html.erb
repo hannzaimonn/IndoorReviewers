@@ -1,39 +1,37 @@
 <div class="container">
-	      <br><div><h4>投稿者</h4><%= @review.user.name %></div>
-	      <div>
+	      <br><span class="show1">投稿者　　　<%= link_to @review.user.name, user_path(@review.user) %></span>
+	      <div class="col-xs-14 text-center">
 	           <%= attachment_image_tag(@review, :image, :fill, 200, 200, fallback: "no_image.jpg") %><br>
-	           <h4>タイトル</h4><%= @review.title %>
+	           <h4>タイトル</h4><span class="show2"><%= @review.title %></span>
 	       </div>
-	        <div><h4>ジャンル</h4><%= @review.genre.name %> </div>
-	        <div><h4>本文</h4><%= @review.body %></div><br>
-	        <div><% if @review.bookmark_by?(current_user) %>
-                    <%= link_to review_bookmark_path(@review), method: :delete do %>
-                     <span class="glyphicon glyphicon-heart" aria-hidden="true" >お気に入り</span>
-                    <% end %>
-                <% else %>
-                    <%= link_to review_bookmarks_path(@review), method: :post do %>
-                     <span class="glyphicon glyphicon-heart-empty" aria-hidden="true">お気に入り</span>
-                    <% end %>
-                <% end %>
-             </div>
-	        <div>コメント数:<%= @review.comments.count %></div>
-	        <% if @review.user.id == current_user.id %>
+	       <hr>
+	       <h4>ジャンル</h4>
+	        <div>・<%= @review.genre.name %> </div>
+	        <h4>本文</h4>
+	        <pre><%= @review.body %></pre><br>
+	        <% if user_signed_in? %>
+            <% if @review.user.id == current_user.id %>
             <div><%= link_to "レビューを編集", edit_review_path(@review) %></div>
             <% else %>
-            <% end %>
-
-
-           <% @review.comments.each do |comment| %>
-				<p><%= attachment_image_tag(comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg") %>
-				<%= comment.body %>
-					<% if comment.user == current_user%>
-                          <%= link_to "Destroy", review_comment_path(comment.review, comment), method: :delete, class: "btn btn-danger" %>
-                    <% end %></p>
-				<% end %>
-			<%= form_for [@review, @comment] do |f| %>
-            <%= f.text_area :body, rows:'5', class: "form-control" %>
-
-             <%= f.submit "送信" %>
+	        <div>
+                <%= render 'bookmarks/like', review: @review %>
+             </div>
              <% end %>
+             <% end %>
+	        <div>コメント数:<%= @review.comments.count %></div>
+            <hr>
+
+            <li id="comments_area">
+            <%= render partial: 'comments/index', locals: { comments: @comments } %>
+            </li>
+				<% if user_signed_in? %>
+				<% if @review.user.id == current_user.id %>
+				 <% else %>
+				 <div class="comment-create">
+                   <h3 class="text-left"></h3>
+				   <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
+			    </div>
+                <% end %>
+                <% end %>
 
 </div>

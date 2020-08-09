@@ -12,18 +12,4 @@ class Review < ApplicationRecord
 	def bookmark_by?(user)
 		bookmarks.where(user_id: user.id).exists?
 	end
-
-	def self.search(search, word)
-        if search == "1"
-        	@review = Review.where(["title LIKE?","#{word}%"])
-        elsif search == "2"
-        	@review = Review.where(["title LIKE?","%#{word}"])
-        elsif search == "3"
-        	@review = Review.where(["title LIKE?","#{word}"])
-        elsif search == "4"
-        	@review = Review.where(["title LIKE?","%#{word}%"])
-        else
-        	@review = Review.all
-        end
-    end
 end

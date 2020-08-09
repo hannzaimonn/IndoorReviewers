@@ -1,11 +1,24 @@
 <div class="container">
+	<h2>お気に入りレビュー</h2>
 <% @bookmark.each do |bookmark| %>
-	<%= link_to review_path(bookmark.review.id) do %>
-	<%= attachment_image_tag(bookmark.review, :image, :fill, 100, 100, fallback: "no_image.jpg") %><br>
-	<%= bookmark.review.title %>
-	<% end %>
-	<%= bookmark.review[:created_at].strftime("%Y-%m-%d %H:%M") %>
-	<%= bookmark.review.genre.name %>
-	<%= bookmark.review.user.name %>
+<div>
+		<span>　　　　　　　　　　　　　　　</span>
+	　　　<%= link_to review_path(bookmark.review.id) do %>
+	　　　<%= attachment_image_tag(bookmark.review, :image, :fill, 65, 65, fallback: "no_image.jpg") %>
+	     <% end %>
+	     <span>　　　　　　　　　　　</span>
+	     <%= link_to review_path(bookmark.review.id) do %>
+           <%= bookmark.review.title %>
+         <% end %>
+    </div>
+    <div class="col-xs-11 text-center">
+    	<span>　　　　　　　　　　　　　　　</span>
+    	<span>ユーザー名:<%= bookmark.review.user.name %></span>
+    	<span>　　　　　　　　　</span>
+         <span>ジャンル:<%= bookmark.review.genre.name %></span>
+	         <span>　　　　　　　　　　　　　</span>
+	     <span>投稿日:<%= bookmark.review[:created_at].strftime("%Y-%m-%d %H:%M") %></span>
+	     <hr>
+    </div>
 	<% end %>
 </div>

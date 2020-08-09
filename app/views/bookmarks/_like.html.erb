@@ -1,0 +1,11 @@
+<div class="bookmark-link" id="bookmark-link-<%= review.id %>">
+<% if review.bookmark_by?(current_user) %>
+  <%= link_to unlike_path(review.id), method: :delete, remote: true do %>
+  <span class="glyphicon glyphicon-star" aria-hidden="true" >お気に入り</span>
+  <% end %>
+<% else %>
+  <%= link_to like_path(review.id), method: :post, remote: true do %>
+  <span class="glyphicon glyphicon-star-empty" aria-hidden="true">お気に入り</span>
+  <% end %>
+<% end %>
+</div>

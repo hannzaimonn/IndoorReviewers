@@ -1,0 +1,88 @@
+<div class="container">
+ <div class="row">
+    <div class="col-xs-3">
+        <h3>ユーザープロフィール</h3>
+        <table class="table">
+            <tr><%= attachment_image_tag(@user, :image_id, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
+
+            <tr>
+                <th><%= @user.name %></th>
+            </tr>
+        </table>
+ <% user ||= current_user %>
+  <div class="stats">
+    <tr>
+        <th><%= link_to following_user_path(@user) do %>
+      <strong id="following" class="stat col-xs-12 btn btn-default glyphicon">
+        フォロー:<%= @user.followings.count %>
+      </strong>
+    <% end %></th>
+    </tr>
+    <tr>
+    <th><%= link_to followers_user_path(@user) do %>
+      <strong id="followers" class="stat col-xs-12 btn btn-default glyphicon">
+        フォロワー:<%= @user.followers.count %>
+      </strong>
+    <% end %></th>
+    </tr>
+  </div>
+<div>
+    <%= link_to 'お気に入り',bookmarks_path, class: "col-xs-12 btn btn-default glyphicon" %>
+</div>
+<% if current_user.id == @user.id %>
+<div>
+    <%= link_to 'ユーザー情報編集',edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon edit_user_#{@user.id}" %>
+</div>
+<div>
+	<%= link_to 'レビュー新規投稿',new_review_path, class: "col-xs-12 btn btn-default glyphicon" %>
+</div>
+<% end %>
+    <div>
+        <%= link_to "タイムライン", user_path(user), class: "col-xs-12 btn btn-default glyphicon user_#{user.id}" %>
+    </div>
+    </div>
+    	<div class="col-xs-9">
+
+    	<h2>投稿レビュー</h2>
+    	<div class="row">
+    	　　　<% @user.reviews.first(5).each do |review| %>
+    	    <div>
+    	    	<span>　　　</span>
+	　　　　　<%= link_to review_path(review.id) do %>
+	　　　　　<%= attachment_image_tag(review, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+	          <% end %>
+            </div>
+            <div class="col-xs-13 text-center">
+            	<%= link_to review_path(review.id) do %>
+	　　　　　　<%= review.title %>
+	　　　　　　<% end %>
+	　　　　　　<%= review.genre.name %>
+	         <span>　　　　　　　　　　　　　</span>
+	           <%= review[:created_at].strftime("%Y-%m-%d %H:%M") %>
+	           <hr>
+            </div>
+	　　　　　　　<% end %>
+          <button type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る</button>
+            <div class="collapse" id="collapseExample">
+                <% @user.reviews.offset(5).each do |time| %>
+            <div>
+    　　　　　<%= link_to review_path(time.id) do %>
+    　　　　　<%= attachment_image_tag(time, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+              <% end %>
+            </div>
+            <div class="col-xs-13 text-center">
+                <span>ユーザー：<%= time.user.name %>　　　</span>
+                <%= link_to review_path(time.id) do %>
+                <%= time.title %>
+               <% end %>
+               <span>　　　ジャンル:<%= time.genre.name %></span>
+             <span>　　　　　　　　　　　　　</span>
+               <%= time[:created_at].strftime("%Y-%m-%d %H:%M") %>
+               <hr>
+            </div>
+            <% end %>
+            </div>
+          </div>
+    </div>
+ </div>
+</div>

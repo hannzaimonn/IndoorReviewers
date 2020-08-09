@@ -1,19 +1,24 @@
 class BookmarksController < ApplicationController
+	before_action :set_variables
+
 	def index
 		@bookmark = Bookmark.all
 	end
 
-	def create
-		review = Review.find(params[:review_id])
-		bookmark = current_user.bookmarks.new(review_id: review.id)
+	def like
+		bookmark = current_user.bookmarks.new(review_id: @review.id)
 		bookmark.save
-		redirect_back(fallback_location: root_path)
 	end
 
-	def destroy
-		review = Review.find(params[:review_id])
-		bookmark = current_user.bookmarks.find_by(review_id: review.id)
+	def unlike
+		bookmark = current_user.bookmarks.find_by(review_id: @review.id)
 		bookmark.destroy
-		redirect_back(fallback_location: root_path)
 	end
+
+	private
+
+  def set_variables
+    @review = Review.find(params[:review_id])
+    @id_name = "#bookmark-link-#{@review.id}"
+  end
 end
