@@ -31,10 +31,10 @@
 </div>
 <% if current_user.id == @user.id %>
 <div>
-    <%= link_to 'ユーザー情報編集',edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon edit_user_#{@user.id}" %>
+      <%= link_to 'ユーザー情報編集',edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon edit_user_#{@user.id}" %>
 </div>
 <div>
-	<%= link_to '新規投稿',new_review_path, class: "col-xs-12 btn btn-default glyphicon" %>
+	  <%= link_to '新規投稿',new_review_path, class: "col-xs-12 btn btn-default glyphicon" %>
 </div>
 <% end %>
     <div>
@@ -48,26 +48,30 @@
     	　　　<% @user.reviews.first(5).each do |review| %>
     	    <div>
     	    	<span>　　　</span>
-	　　　　　<%= link_to review_path(review.id) do %>
-	　　　　　<%= attachment_image_tag(review, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+             <%= link_to review_path(review.id) do %>
+             <%= attachment_image_tag(review, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
 	          <% end %>
             </div>
             <div class="col-xs-13 text-center">
             	<%= link_to review_path(review.id) do %>
-	　　　　　　<%= review.title %>
-	　　　　　　<% end %>
-	　　　　　　<%= review.genre.name %>
+              <%= review.title %>
+              <% end %>
+              <span>　　　ジャンル:</span>
+              <% if review.genre == nil %>
+              <% else %>
+              <span><%= review.genre.name %></span>
+              <% end %>
 	         <span>　　　　　　　　　　　　　</span>
 	           <%= review[:created_at].strftime("%Y-%m-%d %H:%M") %>
 	           <hr>
             </div>
-	　　　　　　　<% end %>
+            <% end %>
           <button type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る</button>
             <div class="collapse" id="collapseExample">
                 <% @user.reviews.offset(5).each do |time| %>
             <div>
-    　　　　　<%= link_to review_path(time.id) do %>
-    　　　　　<%= attachment_image_tag(time, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+            <%= link_to review_path(time.id) do %>
+            <%= attachment_image_tag(time, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
               <% end %>
             </div>
             <div class="col-xs-13 text-center">
@@ -75,8 +79,12 @@
                 <%= link_to review_path(time.id) do %>
                 <%= time.title %>
                <% end %>
-               <span>　　　ジャンル:<%= time.genre.name %></span>
+               <span>　　　ジャンル:</span>
+               <% if review.genre == nil %>
+              <% else %>
+               <span><%= time.genre.name %></span>
              <span>　　　　　　　　　　　　　</span>
+             <% end %>
                <%= time[:created_at].strftime("%Y-%m-%d %H:%M") %>
                <hr>
             </div>

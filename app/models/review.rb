@@ -7,7 +7,6 @@ class Review < ApplicationRecord
 
 	validates :title, presence: true
 	validates :body, presence: true, length: {maximum: 500}
-	validates :genre_id, presence: true
 
 	def bookmark_by?(user)
 		bookmarks.where(user_id: user.id).exists?

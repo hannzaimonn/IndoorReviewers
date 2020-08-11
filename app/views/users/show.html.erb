@@ -59,7 +59,11 @@
             	<%= link_to review_path(time.id) do %>
             	<%= time.title %>
                <% end %>
-               <span>　　　ジャンル:<%= time.genre.name %></span>
+    	       <sapn>　　　　ジャンル:</sapn>
+               <% if time.genre == nil %>
+    	       <% else %>
+               <span><%= time.genre.name %></span>
+	         <% end %>
 	         <span>　　　　　　　　　　　　　</span>
 	           <%= time[:created_at].strftime("%Y-%m-%d %H:%M") %>
 	           <hr>
@@ -78,7 +82,11 @@
             	<%= link_to review_path(time.id) do %>
             	<%= time.title %>
                <% end %>
+               <span>　　　ジャンル:</span>
+               <% if time.genre == nil %>
+    	       <% else %>
                <span>　　　ジャンル:<%= time.genre.name %></span>
+	         <% end %>
 	         <span>　　　　　　　　　　　　　</span>
 	           <%= time[:created_at].strftime("%Y-%m-%d %H:%M") %>
 	           <hr>

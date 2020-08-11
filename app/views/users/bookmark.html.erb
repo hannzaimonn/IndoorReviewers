@@ -15,7 +15,11 @@
     	<span>　　　　　　　　　　　　　　　</span>
     	<span>ユーザー名:<%= bookmark.review.user.name %></span>
     	<span>　　　　　　　　　</span>
-         <span>ジャンル:<%= bookmark.review.genre.name %></span>
+    	<span>ジャンル:</span>
+    	<% if bookmark.review.genre == nil %>
+    	<% else %>
+         <span><%= bookmark.review.genre.name %></span>
+         <% end %>
 	         <span>　　　　　　　　　　　　　</span>
 	     <span>投稿日:<%= bookmark.review[:created_at].strftime("%Y-%m-%d %H:%M") %></span>
 	     <hr>

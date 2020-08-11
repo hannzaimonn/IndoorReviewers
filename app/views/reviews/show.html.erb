@@ -6,7 +6,10 @@
 	       </div>
 	       <hr>
 	       <h4>ジャンル</h4>
+	       <% if @review.genre == nil %>
+    	   <% else %>
 	        <div>・<%= @review.genre.name %> </div>
+	        <% end %>
 	        <h4>本文</h4>
 	        <pre><%= @review.body %></pre><br>
 	        <% if user_signed_in? %>
