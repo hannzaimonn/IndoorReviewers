@@ -6,11 +6,10 @@ Rails.application.routes.draw do
   end
   resources :users do
     member do
-      get :following, :followers, :review
+      get :following, :followers, :review, :bookmark
     end
   end
-  resources :bookmarks, only: [:index]
-  resources :genres,only: [:new,:create]
+  resources :genres,only: [:new,:create,:destroy]
   resources :relationships, only: [:create, :destroy]
   root 'homes#top'
   get 'homes/about' => "homes#about"

@@ -27,14 +27,14 @@
     </tr>
   </div>
 <div>
-    <%= link_to 'お気に入り',bookmarks_path, class: "col-xs-12 btn btn-default glyphicon" %>
+    <%= link_to 'お気に入り',bookmark_user_path, class: "col-xs-12 btn btn-default glyphicon" %>
 </div>
 <% if current_user.id == @user.id %>
 <div>
     <%= link_to 'ユーザー情報編集',edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon edit_user_#{@user.id}" %>
 </div>
 <div>
-	<%= link_to 'レビュー新規投稿',new_review_path, class: "col-xs-12 btn btn-default glyphicon" %>
+	<%= link_to '新規投稿',new_review_path, class: "col-xs-12 btn btn-default glyphicon" %>
 </div>
 <% end %>
     <div>

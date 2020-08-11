@@ -4,7 +4,9 @@
 		<div class="col-xs-2 bg-info">
 			<h4>ジャンル別投稿数</h4>
 			<% @genre.each do |genre| %>
-			<p>・<%= genre.name %>(<%= genre.reviews.count %>)</p>
+			<p>
+				・<%= link_to genre.name, reviews_path(@q, :'q[genre_id_eq' => "#{genre.id}") %>(<%= genre.reviews.count %>)
+			</p>
 			<% end %>
 		</div>
 		<div class="top col-xs-8 col-xs-offset-1 text-center">

@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   	@users = User.all
   end
 
+  def bookmark
+    @bookmark = Bookmark.all
+  end
+
   def review
     @user = User.find(params[:id])
   end

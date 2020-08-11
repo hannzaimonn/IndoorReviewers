@@ -12,13 +12,16 @@
 			</ul>
         </div>
 		<% end %>
-		<%= f.label :ジャンル %>
+		<%= f.label :name, "ジャンル" %>
 		<%= f.text_field :name %>
 		<%= f.submit '追加', class: "btn btn-primary"%>
 		<% end %>
-		<%= link_to 'レビュー新規投稿',new_review_path, class: "col-xs-5 btn btn-default glyphicon" %><br><br>
+		<%= link_to 'レビュー新規投稿へ',new_review_path, class: "col-xs-5 btn btn-default glyphicon" %><br><br>
 <% @genres.each do |genre| %>
-<div class="col-xs-1">
+<div class="col-xs-2">
 ・<%= genre.name %>
+<% if genre.user.id == current_user.id %>
+<%= link_to "削除", genre_path(genre), method: :delete, class: "btn btn-danger" %>
+<% end %>
 </div>
 <% end %>

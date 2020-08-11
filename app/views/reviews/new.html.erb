@@ -23,7 +23,7 @@
 		</div>
 
 		<div>
-			<lebel>ジャンルを選ぶ</lebel>
+			<%= f.label :genre_id, "ジャンルを選ぶ" %>
 			<%= f.collection_select :genre_id, @genres, :id, :name, :include_blank => "選択して下さい" %>
 		</div>
 

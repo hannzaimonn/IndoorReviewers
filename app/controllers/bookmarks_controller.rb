@@ -1,10 +1,6 @@
 class BookmarksController < ApplicationController
 	before_action :set_variables
 
-	def index
-		@bookmark = Bookmark.all
-	end
-
 	def like
 		bookmark = current_user.bookmarks.new(review_id: @review.id)
 		bookmark.save
