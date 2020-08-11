@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+	before_action :baria_user, only: [:edit, :update]
+
 	def new
 		@review = Review.new
 		@genre = Genre.new
@@ -63,4 +65,10 @@ class ReviewsController < ApplicationController
 			:user_id, :title, :body, :genre_id, :image, :release,
 			genres:[:name])
 	end
+
+	def baria_user
+		unless params[:id].to_i == current_user.id
+			redirect_to user_path(current_user)
+    end
+   end
 end
