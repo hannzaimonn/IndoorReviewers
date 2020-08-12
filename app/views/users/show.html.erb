@@ -36,7 +36,7 @@
 </div>
 <% if current_user.id == @user.id %>
 <div>
-	<%= link_to '編集',edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon edit_user_#{@user.id}" %>
+	<%= link_to 'プロフィール編集',edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon edit_user_#{@user.id}" %>
 </div>
 <div>
 	<%= link_to '新規投稿',new_review_path, class: "col-xs-12 btn btn-default glyphicon" %>
@@ -55,7 +55,8 @@
 	          <% end %>
             </div>
             <div class="col-xs-13 text-center">
-            	<span>ユーザー：<%= time.user.name %>　　　</span>
+            	<span>ユーザー：<%= time.user.name %>　</span>
+            	<span>タイトル:</span>
             	<%= link_to review_path(time.id) do %>
             	<%= time.title %>
                <% end %>
@@ -78,7 +79,8 @@
 	          <% end %>
             </div>
             <div class="col-xs-13 text-center">
-            	<span>ユーザー：<%= time.user.name %>　　　</span>
+            	<span>ユーザー：<%= time.user.name %>　　</span>
+            	<span>タイトル:</span>
             	<%= link_to review_path(time.id) do %>
             	<%= time.title %>
                <% end %>

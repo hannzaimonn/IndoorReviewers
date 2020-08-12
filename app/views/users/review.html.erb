@@ -53,6 +53,7 @@
 	          <% end %>
             </div>
             <div class="col-xs-13 text-center">
+                <span>　　　タイトル:</span>
             	<%= link_to review_path(review.id) do %>
               <%= review.title %>
               <% end %>
@@ -75,7 +76,7 @@
               <% end %>
             </div>
             <div class="col-xs-13 text-center">
-                <span>ユーザー：<%= time.user.name %>　　　</span>
+                <span>　　　タイトル:</span>
                 <%= link_to review_path(time.id) do %>
                 <%= time.title %>
                <% end %>
