@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-	before_action :baria_user, only: [:edit, :update]
+	before_action :authenticate_user!, only: [:new, :edit]
+    before_action :correct_user,   only: [:edit, :update]
 
 	def new
 		@review = Review.new
@@ -66,9 +67,8 @@ class ReviewsController < ApplicationController
 			genres:[:name])
 	end
 
-	def baria_user
-		unless params[:id].to_i == current_user.id
-			redirect_to user_path(current_user)
+	def correct_user
+		@review = Review.find(params[:id])
+        redirect_to user_path(current_user) unless @review.user == current_user
     end
-   end
 end
