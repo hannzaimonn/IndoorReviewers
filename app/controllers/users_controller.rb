@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def bookmark
-    @bookmark = Bookmark.all
+    @user = User.find(params[:id])
   end
 
   def review

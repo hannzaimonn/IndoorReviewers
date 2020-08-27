@@ -27,7 +27,7 @@
     </tr>
   </div>
 <div>
-    <%= link_to 'お気に入り',bookmark_user_path, class: "col-xs-12 btn btn-default glyphicon" %>
+    <%= link_to 'お気に入り',bookmark_user_path(@user), class: "col-xs-12 btn btn-default glyphicon" %>
 </div>
 <% if current_user.id == @user.id %>
 <div>

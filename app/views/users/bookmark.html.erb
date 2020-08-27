@@ -1,6 +1,6 @@
 <div class="container">
 	<h2>お気に入りレビュー</h2>
-<% @bookmark.each do |bookmark| %>
+<% @user.bookmarks.each do |bookmark| %>
 <div>
 		<span>　　　　　　　　　　　　　　　</span>
 	　　　<%= link_to review_path(bookmark.review.id) do %>
